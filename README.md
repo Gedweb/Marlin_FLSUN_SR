@@ -15,6 +15,17 @@
 Additional documentation can be found at the [Marlin Home Page](https://marlinfw.org/).
 Please test this firmware and let us know if it misbehaves in any way. Volunteers are standing by!
 
+## Robin Nano v3 configuration
+
+This configuration moved from the open source version provided by Flsun and has the following changes:
+- extruder auto fan set to FAN1_PIN
+- extruder has configured to OMG v2s, it's affects
+    - enabled INVERT_E0_DIR
+    - DEFAULT_AXIS_STEPS_PER_UNIT (default 410)
+- enabled SOFT_RESET_VIA_SERIAL
+- tuned probe feedrate
+- enabled BACKUP_POWER_SUPPLY
+
 ## Marlin 2.1 Bugfix Branch
 
 __Not for production use. Use with caution!__
