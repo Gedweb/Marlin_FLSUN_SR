@@ -17,14 +17,17 @@ Please test this firmware and let us know if it misbehaves in any way. Volunteer
 
 ## Robin Nano v3 configuration
 
-This configuration moved from the open source version provided by Flsun and has the following changes:
-- extruder auto fan set to FAN1_PIN
-- extruder has configured to OMG v2s, it's affects
-    - enabled INVERT_E0_DIR
-    - DEFAULT_AXIS_STEPS_PER_UNIT (default 410)
-- enabled SOFT_RESET_VIA_SERIAL
+#### This configuration moved from the open source version provided by Flsun and has the following changes:
 - tuned probe feedrate
-- enabled BACKUP_POWER_SUPPLY
+- extruder auto fan set to `FAN1_PIN`
+- steps is configured for 0.9 degree steppers
+- `SOFT_RESET_VIA_SERIAL true`
+- `BACKUP_POWER_SUPPLY true`
+
+#### Notes:
+OMG v2s extruder
+  - `DEFAULT_AXIS_STEPS_PER_UNIT 774`
+  - `INVERT_E0_DIR true`
 
 ## Marlin 2.1 Bugfix Branch
 

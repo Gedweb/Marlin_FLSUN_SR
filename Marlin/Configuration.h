@@ -67,7 +67,7 @@
 
 // Choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_MKS_ROBIN_NANO_V3
+  #define MOTHERBOARD BOARD_BTT_OCTOPUS_PRO_V1_0
 #endif
 
 /**
@@ -93,15 +93,15 @@
  */
 #define BAUDRATE 250000
 
-//#define BAUD_RATE_GCODE     // Enable G-code M575 to set the baud rate
+#define BAUD_RATE_GCODE     // Enable G-code M575 to set the baud rate
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
  * Currently Ethernet (-2) is only supported on Teensy 4.1 boards.
  * :[-2, -1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 3
-//#define BAUDRATE_2 250000   // :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
+#define SERIAL_PORT_2 1
+#define BAUDRATE_2 250000   // :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000] Enable to override BAUDRATE
 
 /**
  * Select a third serial port on the board to use for communication with the host.
@@ -675,9 +675,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp  13.70
-    #define DEFAULT_Ki   0.48
-    #define DEFAULT_Kd  70.22
+    #define DEFAULT_Kp 10.18
+    #define DEFAULT_Ki 0.50
+    #define DEFAULT_Kd 51.49
   #endif
 #else
   #define BANG_MAX 255    // Limit hotend current while in bang-bang mode; 255=full current
@@ -765,9 +765,9 @@
 
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 111.12
-  #define DEFAULT_bedKi 22.05
-  #define DEFAULT_bedKd 373.36
+  #define DEFAULT_bedKp 315.08
+  #define DEFAULT_bedKi 59.68
+  #define DEFAULT_bedKd 1109.10
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #else
@@ -931,7 +931,7 @@
   #endif
 
   // Print surface diameter/2 minus unreachable space (avoid collisions with vertical towers).
-  #define DELTA_PRINTABLE_RADIUS 132.0    // (mm)
+  #define PRINTABLE_RADIUS 132.0    // (mm)
 
   // Maximum reachable area
   #define DELTA_MAX_RADIUS       140.0    // (mm)
@@ -1219,7 +1219,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 #define DEFAULT_XYZ_STEPS_PER_UNIT 640
-#define DEFAULT_AXIS_STEPS_PER_UNIT { DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, 1529 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT { DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, DEFAULT_XYZ_STEPS_PER_UNIT, 1640 }
 
 /**
  * Default Max Feed Rate (linear=mm/s, rotational=°/s)
@@ -1324,7 +1324,7 @@
  * The probe replaces the Z-MIN endstop and is used for Z homing.
  * (Automatically enables USE_PROBE_FOR_Z_HOMING.)
  */
-#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
+//#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
 //#define USE_PROBE_FOR_Z_HOMING
@@ -1342,7 +1342,7 @@
  *    - Normally-closed (NC) also connect to GND.
  *    - Normally-open (NO) also connect to 5V.
  */
-//#define Z_MIN_PROBE_PIN -1
+#define Z_MIN_PROBE_PIN Z2_DIAG_PIN // Pin PC5 is the Octopus pro default
 
 /**
  * Probe Type
@@ -1712,7 +1712,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1753,15 +1753,15 @@
 // @section geometry
 
 // The size of the printable area
-#define X_BED_SIZE ((DELTA_PRINTABLE_RADIUS) * 2)
-#define Y_BED_SIZE ((DELTA_PRINTABLE_RADIUS) * 2)
+#define X_BED_SIZE ((PRINTABLE_RADIUS) * 2)
+#define Y_BED_SIZE ((PRINTABLE_RADIUS) * 2)
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
-#define X_MIN_POS -(DELTA_PRINTABLE_RADIUS)
-#define Y_MIN_POS -(DELTA_PRINTABLE_RADIUS)
+#define X_MIN_POS -(PRINTABLE_RADIUS)
+#define Y_MIN_POS -(PRINTABLE_RADIUS)
 #define Z_MIN_POS 0
-#define X_MAX_POS DELTA_PRINTABLE_RADIUS
-#define Y_MAX_POS DELTA_PRINTABLE_RADIUS
+#define X_MAX_POS PRINTABLE_RADIUS
+#define Y_MAX_POS PRINTABLE_RADIUS
 #define Z_MAX_POS MANUAL_Z_HOME_POS
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
