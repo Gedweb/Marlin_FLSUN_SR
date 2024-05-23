@@ -740,7 +740,7 @@
  * The multiplexer is automatically switched at tool-change.
  * Set FANMUX[012]_PINs below for up to 2, 4, or 8 multiplexed fans.
  */
-#define FANMUX0_PIN -1
+#define FANMUX0_PIN FAN2_PIN // the default PIN has died
 #define FANMUX1_PIN -1
 #define FANMUX2_PIN -1
 
@@ -2995,7 +2995,7 @@
 
   #if AXIS_IS_TMC_CONFIG(E0)
     #define E0_CURRENT      DEFAULT_CURRENT
-    #define E0_MICROSTEPS   DEFAULT_MICROTEPS
+    #define E0_MICROSTEPS   32
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
     //#define E0_INTERPOLATE true
